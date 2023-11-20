@@ -6,13 +6,13 @@ export default class ProdutoCTRL {
 
         if (requisicao.method === "POST" && requisicao.is("application/json")) {
             const dados = requisicao.body;
-            const id = dados.id;
+            const idp = dados.idp;
             const titulo = dados.titulo;
             const preco = dados.preco;
             const descricao = dados.descricao;
             const categoria = dados.categoria;
 
-            if (id && titulo && preco && descricao && categoria) {
+            if (idp && titulo && preco && descricao && categoria) {
                 const produto = new Produto(titulo, preco, descricao, categoria);
 
                 produto.salvar().then(() => {
@@ -47,14 +47,14 @@ export default class ProdutoCTRL {
 
         if (requisicao.method === "PUT" && requisicao.is("application/json")) {
             const dados = requisicao.body;
-            const id = dados.id;
+            const idp = dados.idp;
             const titulo = dados.titulo;
             const preco = dados.preco;
             const descricao = dados.descricao;
             const categoria = dados.categoria;
 
-            if (id && titulo && preco && descricao && categoria) {
-                const produto = new Produto(id, titulo, preco, descricao, categoria);
+            if (idp && titulo && preco && descricao && categoria) {
+                const produto = new Produto(idp, titulo, preco, descricao, categoria);
 
                 produto.editar().then(() => {
                     resposta.status(200).json({
@@ -88,10 +88,10 @@ export default class ProdutoCTRL {
 
         if (requisicao.method === "DELETE" && requisicao.is("application/json")) {
             const dados = requisicao.body;
-            const id = dados.id;
+            const idp = dados.idp;
 
-            if (id) {
-                const produto = new Produto(id);
+            if (idp) {
+                const produto = new Produto(idp);
 
                 produto.excluir().then(() => {
                     resposta.status(200).json({
@@ -143,12 +143,12 @@ export default class ProdutoCTRL {
 
     consultarID(requisicao, resposta) {
         resposta.type("application/json");
-        const id = (requisicao.params["id"]);
+        const idp = (requisicao.params["idp"]);
 
         if (requisicao.method === "GET") {
             const produto = new Produto();
 
-            produto.consultarID(id).then((produto) => {
+            produto.consultarID(idp).then((produto) => {
                 resposta.status(200).json(produto);
             }).catch((erro) => {
                 resposta.status(500).json({

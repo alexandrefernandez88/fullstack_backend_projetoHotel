@@ -7,23 +7,29 @@ export default class VendaCtrl {
         if (requisicao.method === "POST" && requisicao.is("application/json")) {
             const dados = requisicao.body;
             const dataVenda = dados.dataVenda;
-            const desconto = dados.desconto;
-            const valorTotalTributos = dados.valorTotalTributos;
+            // const desconto = dados.desconto;
+            // const valorTotalTributos = dados.valorTotalTributos;
             const cliente = dados.cliente;//podendo enviar apenas o cpf do cliente, verificando se o cliente existe no banco e se precisa cadastrar
+            //novo
             const listaProdutos = dados.produto; //produtos
+            //fim
             if (
                 dataVenda && 
-                desconto && 
-                valorTotalTributos && 
+                // desconto && 
+                // valorTotalTributos && 
                 cliente &&
+                //novo
                 listaProdutos) {
+                //fim
                 const venda = new Venda(
                     0,
                     dataVenda,
-                    desconto,
-                    valorTotalTributos,
+                    // desconto,
+                    // valorTotalTributos,
                     cliente,
+                    //novo
                     listaProdutos
+                    //fim
                 );
                 venda.salvar().then(() => {
                         resposta.status(200).json({
@@ -58,14 +64,14 @@ export default class VendaCtrl {
         if (requisicao.method === "PUT" && requisicao.is("application/json")) {
             const dados = requisicao.body;
             const id = dados.id;
-            // const produto = dados.produto;
+            const produto = dados.produto;
             const dataVenda = dados.dataVenda;
             const desconto = dados.desconto;
             const valorTotalTributos = dados.valorTotalTributos;
             const cpfCliente = dados.cpfCliente;
             if (
                 id &&
-                //  produto && 
+                 produto && 
                  dataVenda && desconto && valorTotalTributos && cpfCliente) {
                 const venda = new Venda(id, dataVenda, desconto, valorTotalTributos, cpfCliente);
 
@@ -111,7 +117,7 @@ export default class VendaCtrl {
                     }).catch((erro) => {
                         resposta.status(500).json({
                             status: false,
-                            mensagem: erro.message
+                            mensagem: "Erro ao excluir" + erro.message
                         });
                     });
             }

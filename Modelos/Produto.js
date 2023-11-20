@@ -1,25 +1,25 @@
 import ProdutoDB from "../Persistencia/ProdutoBD.js";
 
 export default class Produto {
-    #id;
+    #idp;
     #titulo;
     #preco;
     #descricao;
     #categoria;
     
-    constructor(id=0, titulo="", preco=0.00, descricao="", categoria="") {
-        this.#id = id;
+    constructor(idp=0, titulo="", preco=0.00, descricao="", categoria="") {
+        this.#idp = idp;
         this.#titulo = titulo;
         this.#preco = preco;
         this.#descricao = descricao;
         this.#categoria = categoria;
     }
 
-    get id() {
-        return this.#id;
+    get idp() {
+        return this.#idp;
     }
-    set id(novoID) {
-        this.#id = novoID;
+    set idp(novoIDP) {
+        this.#idp = novoIDP;
     }
 
 
@@ -57,7 +57,7 @@ export default class Produto {
 
     toJSON() {
         return {
-            "id"                   : this.#id,
+            "idp"                   : this.#idp,
             "titulo"               : this.#titulo,
             "preco"                : this.#preco,
             "descricao"            : this.#descricao,
@@ -67,7 +67,7 @@ export default class Produto {
 
     async salvar() {
         const produtoBD = new ProdutoDB();
-        this.#id = await produtoBD.salvar(this);
+        this.#idp = await produtoBD.salvar(this);
     }
 
     // async editar() {

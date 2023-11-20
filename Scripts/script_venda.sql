@@ -8,7 +8,7 @@ CREATE TABLE venda (
 );
 
 
-CREATE TABLE `venda` (
+CREATE TABLE `fullstack`.`venda` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `dataVenda` varchar(10) NOT NULL,
   `desconto` decimal(10,2) NOT NULL,

@@ -1,25 +1,28 @@
 // import VendaDB from "../Persistencia/VendaBD.js";
 
 export default class ItemVenda {
-    #codVenda
+    // #codVenda
     #codProduto
     #qtd
     #preco
-    constructor(codVenda = 0, codProduto = "", qtd = "", preco = 0.00) {
-        this.#codVenda = codVenda;
+ 
+    // constructor(codVenda = 0, codProduto = "", qtd = "", preco = 0.00) {
+    constructor(codProduto = "", qtd = "", preco = 0.00) {
+        // this.#codVenda = codVenda;
         this.#codProduto = codProduto;;
         this.#qtd = qtd;
         this.#preco = preco;
+        
     }
 
 
-    get codVenda() {
-        return this.#codVenda;
-    }
+    // get codVenda() {
+    //     return this.#codVenda;
+    // }
 
-    set codVenda(novoCodVenda) {
-        this.#codVenda = novoCodVenda;
-    }
+    // set codVenda(novoCodVenda) {
+    //     this.#codVenda = novoCodVenda;
+    // }
 
     get codProduto() {
         return this.#codProduto;
@@ -44,9 +47,15 @@ export default class ItemVenda {
     }
 
 
+
         toJSON() {
+            // return {
+            //     "codVenda": this.#codVenda,
+            //     "codProduto": this.#codProduto,
+            //     "qtd": this.#qtd,
+            //     "preco": this.#preco
+            // }
             return {
-                "codVenda": this.#codVenda,
                 "codProduto": this.#codProduto,
                 "qtd": this.#qtd,
                 "preco": this.#preco

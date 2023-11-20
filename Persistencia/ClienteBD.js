@@ -5,7 +5,7 @@ export default class ClienteDB {
     async salvar(cliente) {
         if (cliente instanceof Cliente) {
             const conexao = await conectar();
-            const sql = "INSERT INTO cliente (cpf, nome, sobrenome, usuario, cidade, uf, cep, endereco, bairro, telefone, email) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+            const sql = "INSERT INTO cliente (cpf, nome, sobrenome, usuario, cidade, uf, cep, endereco, numero, bairro, telefone, email) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
             const valores = [cliente.cpf,
                 cliente.nome,
                 cliente.sobrenome,
@@ -14,6 +14,7 @@ export default class ClienteDB {
                 cliente.uf,
                 cliente.cep,
                 cliente.endereco,
+                cliente.numero,
                 cliente.bairro,
                 cliente.telefone,
                 cliente.email];
@@ -25,7 +26,7 @@ export default class ClienteDB {
     async editar(cliente) {
         if (cliente instanceof Cliente) {
             const conexao = await conectar();
-            const sql = "UPDATE cliente SET nome=?, sobrenome=?, usuario=?, cidade=?, uf=?, cep=?, endereco=?, bairro=?, telefone=?, email=? WHERE cpf=?";
+            const sql = "UPDATE cliente SET nome=?, sobrenome=?, usuario=?, cidade=?, uf=?, cep=?, endereco=?, numero=?, bairro=?, telefone=?, email=? WHERE cpf=?";
             const valores = [cliente.nome,
                 cliente.sobrenome,
                 cliente.usuario,
@@ -33,6 +34,7 @@ export default class ClienteDB {
                 cliente.uf,
                 cliente.cep,
                 cliente.endereco,
+                cliente.numero,
                 cliente.bairro,
                 cliente.telefone,
                 cliente.email,
@@ -68,6 +70,7 @@ export default class ClienteDB {
                 row["uf"],
                 row["cep"],
                 row["endereco"],
+                row["numero"],
                 row["bairro"],
                 row["telefone"],
                 row["email"]);
@@ -94,6 +97,7 @@ export default class ClienteDB {
             row["uf"],
             row["cep"],
             row["endereco"],
+            row["numero"],
             row["bairro"],
             row["telefone"],
             row["email"]);

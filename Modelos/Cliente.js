@@ -9,11 +9,12 @@ export default class Cliente {
     #uf;
     #cep;
     #endereco;
+    #numero;
     #bairro;
     #telefone;
     #email;
 
-    constructor(cpf, nome, sobrenome, usuario, cidade, uf, cep, endereco, bairro, telefone, email) {
+    constructor(cpf, nome, sobrenome, usuario, cidade, uf, cep, endereco, numero, bairro, telefone, email) {
         this.#cpf = cpf;
         this.#nome = nome;
         this.#sobrenome = sobrenome;
@@ -22,6 +23,7 @@ export default class Cliente {
         this.#uf = uf;
         this.#cep = cep;
         this.#endereco = endereco;
+        this.#numero = numero;
         this.#bairro = bairro;
         this.#telefone = telefone;
         this.#email = email;
@@ -83,6 +85,13 @@ export default class Cliente {
         this.#endereco = novoEndereco;
     }
 
+    get numero() {
+        return this.#numero;
+    }
+    set numero(novoNumero) {
+        this.#numero = novoNumero;
+    }
+
     get bairro() {
         return this.#bairro;
     }
@@ -116,6 +125,7 @@ export default class Cliente {
             "uf"          : this.#uf,
             "cep"         : this.cep,
             "endereco"    : this.#endereco,
+            "numero"      : this.#numero,
             "bairro"      : this.#bairro,
             "telefone"    : this.#telefone,
             "email"       : this.#email

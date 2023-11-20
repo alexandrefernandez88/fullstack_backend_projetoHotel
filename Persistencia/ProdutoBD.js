@@ -7,7 +7,7 @@ export default class ProdutoDB {
             const conexao = await conectar();
             const sql = "INSERT INTO produto (titulo, preco, descricao, categoria) VALUES (?,?,?,?)";
             const valores = [
-                            produto.id,
+                            produto.idp,
                             produto.titulo,
                             produto.preco,
                             produto.descricao,
@@ -52,7 +52,7 @@ export default class ProdutoDB {
         const listaProdutos = [];
 
         for (const row of rows) {
-            const produto = new Produto(row["id"],
+            const produto = new Produto(row["idp"],
                                         row["titulo"],
                                         row["preco"],    
                                         row["descricao"],

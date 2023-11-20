@@ -7,7 +7,7 @@ const vendaCtrl = new VendaCtrl();
 
 rotaVenda.post("/", vendaCtrl.salvar)
 // .put("/", vendaCtrl.editar)
-// .delete("/", vendaCtrl.excluir)
+.delete("/", vendaCtrl.excluir)
 .get("/", vendaCtrl.consultar)
 .get("/:id", vendaCtrl.consultarID)
 
